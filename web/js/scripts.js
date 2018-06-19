@@ -70,7 +70,7 @@ function signUp()
 
   $.ajax({
     type: "POST",
-    url: "signUp.php",
+    url: "sign_Up.php",
     data: `username=${username}&password=${password}&email=${email}&fullName=${fullName}`,
     success: function(msg){
           //alert( "Data Saved: " + msg );
