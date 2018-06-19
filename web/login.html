@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TRUE STORY</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="js/fontawesome-all.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="col-lg-2 col-sm-2">
+            <a href="home.php"><img src="img/TS-logo-white.png" class="img-fluid col-lg-10" alt=""></a>
+      </div>
+    </header>
+    <nav>
+      <div class="col-md-8 offset-md-2 siteLocation">LOGIN</div>
+    </nav>
+    <div class="search">
+
+    </div>
+    <main>
+      <div class="container loginForm">
+        <div class="card col-md-6 col-sm-12 col-lg-4 offset-md-4">
+          <div class="card-body">
+            <form  action="javascript:login();" >
+              <div class="form-group">
+                <input type="text" name="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Username">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" id="password" placeholder="Password">
+              </div>
+              <small class="incorrectLogInMessage">The username or password is incorrect</small>
+              <button type="submit" class="btn btn-secondary col-lg-4 offset-lg-4">Submit</button>
+              <div class="row">
+                <div class="col-lg-6">
+                  <a href="signUp.html"><small>Register</small></a>
+                </div>
+                <div class="col-lg-6">
+                  <a href=""><small>Forgot your password?</small></a>
+                </div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="text-center">
+      <small>TRUE STORY | ALL RIGHTS RESERVED</small>
+    </footer>
+  </body>
+</html>

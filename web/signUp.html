@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>TRUE STORY</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="js/fontawesome-all.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="col-lg-2 col-sm-2">
+        <a href="home.php"><img src="img/TS-logo-white.png" class="img-fluid col-lg-10" alt=""></a>
+      </div>
+    </header>
+    <nav>
+      <div class="col-md-8 offset-md-2 siteLocation">SIGN UP</div>
+    </nav>
+
+    <main>
+      <div class="container loginForm">
+        <div class="card col-md-6 col-sm-12 col-lg-4 offset-md-4">
+          <div class="card-body">
+            <form  action="javascript:signUp();" class="signUpForm" >
+              <div class="form-group">
+                <input type="text" name="fullname" class="form-control" required="required" pattern="[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" id="signUpFullname" placeholder="Full Name">
+              </div>
+              <div class="form-group">
+                <input type="text" name="username" pattern="[A-Za-z]{4,}"required="required" class="form-control" id="signUpUsername" title="Four or more leters" aria-describedby="emailHelp" placeholder="Username">
+              </div>
+              <div class="form-group">
+                <input type="email" name="email" class="form-control" required="required" id="signUpEmail" aria-describedby="emailHelp" placeholder="Email">
+              </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" id="signUpPassword" required="required" pattern=".{6,}" title="Six or more characters" placeholder="Password">
+                </div>
+              <button type="submit" class="btn btn-secondary col-lg-4 offset-lg-4">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+
+    </footer>
+  </body>
+</html>
