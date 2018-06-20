@@ -44,6 +44,12 @@ nav .row{
   display: none;
 }
 
+#irobotCertainty{
+  padding-top: 1vw;
+  color: 	#65737e;
+  font-family: 'Orbitron', sans-serif;
+}
+
 #certainty{
   padding-top: 1vw;
   color:#9CA2A7;

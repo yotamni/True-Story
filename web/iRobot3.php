@@ -65,6 +65,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         <div class="card-body chartCard">
             <div class=" col-lg-10 offset-lg-1">
               <img class="robotImg img-fluid rounded-circle floatingImg" src="" alt="">
+			  <h5 id="irobotCertainty" class="text-center"></h5>
             </div>
         </div>
       </div>
