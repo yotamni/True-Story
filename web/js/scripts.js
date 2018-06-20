@@ -512,7 +512,7 @@ function showSelfResults(msg){
   $('#ResultUsername').html(resultObj.data.username);
   $('#profileImg').attr("src",resultObj.data.profilePicture);
   console.log(resultObj.data.results[0].results.isBot);
-  if(resultObj.data.results[0].results.isBot===false){
+  if(resultObj.data.results[0].results.isBot===0){
     $('.robotImg').attr("src","img/noRobot.png").fadeIn("slow");
     $('#isRealUser').html(`${resultObj.data.username} is <span>Real</span>`).slideDown("slow");
   }
