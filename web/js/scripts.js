@@ -121,7 +121,7 @@ function removeIdol(idolName,button)
     jQuery.each(searches, function(i, val) {
       jQuery.each(val,function(k,v){
         console.log(`iterate: ${v} : ${idolName}`);
-        if(v===idolName){
+        if(v==idolName){
           searches.splice(i, 1);
           sessionStorage.setItem('searches',JSON.stringify(searches));
           $(`.${idolName}`).slideUp("slow");
@@ -131,7 +131,7 @@ function removeIdol(idolName,button)
 
   var arr = searches;
 
-  if(searches.length===0){
+  if(searches.length==0){
     console.log("length 0:" + searches.length);
     var p ='<h5>No searches found</h5>';
     $(".idolsToInspect").append(p);
@@ -159,7 +159,7 @@ function getMyIdols(){
   var selfDetect = [];
   console.log("searches:" + sessionStorage.getItem('searches'));
 
-  if(sessionStorage.getItem('searches')==="undefined" || sessionStorage.getItem('searches').length == 2)
+  if(sessionStorage.getItem('searches')=="undefined" || sessionStorage.getItem('searches').length == 2)
   {
     var p ='<h5>No searches found</h5>';
     $(".idolsToInspect").append(p);
@@ -232,11 +232,11 @@ function CheckIfIdolInSearchesList(idolUsername)
     var t = jQuery.parseJSON(sessionStorage.getItem('searches'));
     jQuery.each(t,function(key,value){
       jQuery.each(value,function(k,v){
-        if(v===idolUsername && k ==='false' ){
+        if(v==idolUsername && k =='false' ){
           console.log('in list:' + idolUsername);
           ExploreButtonBlock();
         }
-        else if(v===idolUsername && k ==='true' ){
+        else if(v==idolUsername && k =='true' ){
           console.log('in list:' + idolUsername);
           IsRobbotButtonBlock();
         }
@@ -264,7 +264,7 @@ function CheckIfRobot(isSelfFollow)
   success: function(msg){
         console.log(`success - idolId:${uid}`);
         obj = jQuery.parseJSON(msg);
-        if(obj.result===0)
+        if(obj.result==0)
         {
           console.log(obj.result);
           $("#exampleModalCenter").modal('show');
@@ -346,7 +346,7 @@ function exploreIdol()
   success: function(msg){
         console.log(`success - idolId:${uid}`);
         obj = jQuery.parseJSON(msg);
-        if(obj.result===0)
+        if(obj.result==0)
         {
           console.log(obj.result);
           $("#exampleModalCenter").modal('show');
@@ -367,7 +367,7 @@ function addIdolToSearchesList(isSelfFollow){
   var searches;
   if(sessionStorage.getItem('searches')!="undefined"){
     searches = jQuery.parseJSON(sessionStorage.getItem('searches'));
-    if(isSelfFollow===true){
+    if(isSelfFollow==true){
       var obj = {true:sessionStorage.getItem('idolUsername')};
       searches.push(obj);
     }
@@ -377,7 +377,7 @@ function addIdolToSearchesList(isSelfFollow){
     }
   }
   else{
-    if(isSelfFollow===true){
+    if(isSelfFollow==true){
       searches = [{true:sessionStorage.getItem('idolUsername')}];
     }
     else{
@@ -493,10 +493,10 @@ function showResult(resulType){
     url: "https://true-story-web-service.herokuapp.com",
     data: {"request":"getResults","uid":idolInstagramName},
     success: function(msg){
-      if(resulType==="followers"){
+      if(resulType=="followers"){
         showFollowersResults(msg);
       }
-      else if(resulType==="self"){
+      else if(resulType=="self"){
         showSelfResults(msg);
       }
     },
@@ -513,7 +513,7 @@ function showSelfResults(msg){
   $('#profileImg').attr("src",resultObj.data.profilePicture);
   console.log(resultObj.data.results[0].results.isBot);
   $('#irobotCertainty').html(`Certainty: ${resultObj.data.results[0].results.certainty.toFixed(0)}%`);
-  if(resultObj.data.results[0].results.isBot===0){
+  if(resultObj.data.results[0].results.isBot==0){
     $('.robotImg').attr("src","img/noRobot.png").fadeIn("slow");
     $('#isRealUser').html(`${resultObj.data.username} is <span>Real</span>`).slideDown("slow");
   }
@@ -569,7 +569,7 @@ function calculateRelations(msg){
   obj = jQuery.parseJSON(msg);
   var sumRobot = 0, certainty = 0;
   jQuery.each(obj.data.results,function(i, val) {
-    if(val.results.isBot===1)
+    if(val.results.isBot==1)
     {
       sumRobot +=1;
     }
