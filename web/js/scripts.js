@@ -293,7 +293,6 @@ function CheckIfRobot(isSelfFollow)
   url: "https://true-story-web-service.herokuapp.com",
   data: `request=insertIdol&username=${username}&selfFollow=${isSelfFollow}`,
   success: function(msg){
-        console.log(`success - idolId:${uid}`);
         obj = jQuery.parseJSON(msg);
         if(obj.result===0)
         {
@@ -561,7 +560,8 @@ function showFollowersResults(msg){
   var resultObj = jQuery.parseJSON(msg);
   if(resultObj.data.username!=null){
     //var relations = calculateRelations(msg);
-    $('#botsDetails').html(`${resultObj.data.results.fake + resultObj.data.results.real} followers >>> <span>${resultObj.data.results.fake}%</span> Fake`);
+    roundedResult = resultObj.data.results.fake/(resultObj.data.results.fake+resultObj.data.results.real)*100;
+    $('#botsDetails').html(`${resultObj.data.results.fake + resultObj.data.results.real} followers >>> <span>${roundedResult.toFixed(0)}%</span> Fake`);
     $('#profileImg').attr("src",resultObj.data.profilePicture);
     $('#ResultUsername').html(resultObj.data.username);
     $('#idolFollowers').html(`Followers: ${resultObj.data.counts.Followers}`);
@@ -569,7 +569,13 @@ function showFollowersResults(msg){
     $('#idolMedia').html(`Media: ${resultObj.data.counts.Media}`);
     $('#certainty').html(`Result certainty: ${resultObj.data.results.certainty.toFixed(0)}%`);
     $('.siteLocation').append(` > ${resultObj.data.fullName}`);
-    $('#isFinalResult').html(`Is result final: ${resultObj.data.final}`)
+    if(resultObj.data.final == true)
+    {
+      $('#isFinalResult').html(`Final results`);
+    }
+    else{
+      $('#isFinalResult').html(`Temporary results`);
+    }
     $('#profilesDetect').html(`Checked profiles: ${resultObj.data.results.fake + resultObj.data.results.real} out of ${resultObj.data.counts.Followers}`);
     drowChart(resultObj.data.results.fake + resultObj.data.results.real,resultObj.data.results.fake);
   }

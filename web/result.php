@@ -63,9 +63,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
           <div class="row">
             <div id="main"></div>
             <div class="">
+              <h5 id="isFinalResult" class="resultInfo"></h5>
               <p id="profilesDetect" class="resultInfo"></p>
               <p id="certainty" class="resultInfo"></p>
-              <p id="isFinalResult" class="resultInfo"></p>
               <p id="idolFollowers" class="resultInfo"></p>
               <p id="idolFollowing" class="resultInfo"></p>
               <p id="idolMedia" class="resultInfo"></p>
