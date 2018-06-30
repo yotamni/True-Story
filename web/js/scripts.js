@@ -287,11 +287,11 @@ function CheckIfRobot(isSelfFollow)
 
   console.log("in CheckIfRobot() - ");
 
-  uid = sessionStorage.getItem("idolId");
+  username = sessionStorage.getItem("idolUsername");
   $.ajax({
   type: "POST",
   url: "https://true-story-web-service.herokuapp.com",
-  data: `request=insertIdol&uid=${uid}&selfFollow=${isSelfFollow}`,
+  data: `request=insertIdol&username=${username}&selfFollow=${isSelfFollow}`,
   success: function(msg){
         console.log(`success - idolId:${uid}`);
         obj = jQuery.parseJSON(msg);
