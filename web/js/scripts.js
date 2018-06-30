@@ -10,7 +10,7 @@ function login()
   url: "login.php",
   data: `username=${username}&password=${password}`,
   success: function(msg){
-        //alert( "Data Saved: " + msg );
+
         console.log("msg:" + msg);
         var obj = jQuery.parseJSON(msg);
         //console.log("obj:" + obj[0].searches[2]);
@@ -34,7 +34,7 @@ function login()
         }
   },
   error: function(XMLHttpRequest, textStatus, errorThrown) {
-     alert("some error");
+
   }
 });
 }
@@ -46,14 +46,14 @@ function logout()
     type: "POST",
     url: "logout.php",
     success: function(msg){
-          //alert( "Data Saved: " + msg );
+
           console.log("msg:" + msg);
           if(msg==1){
               window.location = `index.html`;
           }
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {
-       alert("some error");
+
     }
   });
 }
@@ -73,7 +73,7 @@ function signUp()
     url: "signUp.php",
     data: `username=${username}&password=${password}&email=${email}&fullName=${fullName}`,
     success: function(msg){
-          //alert( "Data Saved: " + msg );
+
 
           console.log(msg);
           var obj = jQuery.parseJSON(msg);
@@ -85,7 +85,7 @@ function signUp()
           }
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {
-       alert("some error");
+
     }
   });
 
@@ -121,7 +121,7 @@ function removeIdol(idolName,button)
     jQuery.each(searches, function(i, val) {
       jQuery.each(val,function(k,v){
         console.log(`iterate: ${v} : ${idolName}`);
-        if(v==idolName){
+        if(v===idolName){
           searches.splice(i, 1);
           sessionStorage.setItem('searches',JSON.stringify(searches));
           $(`.${idolName}`).slideUp("slow");
@@ -131,7 +131,7 @@ function removeIdol(idolName,button)
 
   var arr = searches;
 
-  if(searches.length==0){
+  if(searches.length===0){
     console.log("length 0:" + searches.length);
     var p ='<h5>No searches found</h5>';
     $(".idolsToInspect").append(p);
@@ -147,10 +147,41 @@ function removeIdol(idolName,button)
             console.log(msg);
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
-         alert("some error");
+
       }
     });
   }
+}
+
+function searchResult(){
+  $('.sResultContainer').show();
+  $('.searchResult').remove();
+    $('.searchResultTemplate').show();
+  console.log('in search result');
+  var idolsList = [$('#searchIdol').val().trim()];
+  $.ajax({
+  type: "POST",
+  url: "https://true-story-web-service.herokuapp.com",
+  data: {"request":"getIdol","idolNames":idolsList,"username":0},
+  success: function(msg){
+    var obj = jQuery.parseJSON(msg);
+    jQuery.each(obj.data,function(i, val){
+      var temp = $( ".searchResultTemplate" ).clone();
+      temp.find('img').attr("src",val.profilePicture);
+      temp.find('p').html(val.username);
+      temp.find('small').html(val.fullName);
+      temp.removeClass('searchResultTemplate').addClass('searchResult');
+      temp.attr("href",`idol.php?${val.username}`);
+      temp.appendTo(".searchResultContainer");
+    });
+    //$('.searchResultTemplate p').html('test name');
+    $('.searchResultTemplate').hide();
+    $('#searchIdol').val('');
+  },
+  error: function(XMLHttpRequest, textStatus, errorThrown) {
+
+  }
+});
 }
 
 function getMyIdols(){
@@ -159,7 +190,7 @@ function getMyIdols(){
   var selfDetect = [];
   console.log("searches:" + sessionStorage.getItem('searches'));
 
-  if(sessionStorage.getItem('searches')=="undefined" || sessionStorage.getItem('searches').length == 2)
+  if(sessionStorage.getItem('searches')==="undefined" || sessionStorage.getItem('searches').length == 2)
   {
     var p ='<h5>No searches found</h5>';
     $(".idolsToInspect").append(p);
@@ -191,7 +222,7 @@ function getMyIdols(){
         temp.find('p:nth-of-type(2)').html(value.fullName);
         if(selfDetect[key]=='true'){
             temp.find('p:first').html(value.username + ' <i class="fab fa-android"></i>');
-            temp.find('a').attr("href",`iRobot3.php?${value.userID}`);
+            temp.find('a').attr("href",`iRobot.php?${value.userID}`);
         }
         else {
             temp.find('p:first').html(value.username + ' <i class="fas fa-chart-pie"></i>');
@@ -205,7 +236,7 @@ function getMyIdols(){
       $('.loadingSpin').css("display","none");
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {
-       //alert("some error");
+
     }
   });
   }
@@ -232,11 +263,11 @@ function CheckIfIdolInSearchesList(idolUsername)
     var t = jQuery.parseJSON(sessionStorage.getItem('searches'));
     jQuery.each(t,function(key,value){
       jQuery.each(value,function(k,v){
-        if(v==idolUsername && k =='false' ){
+        if(v===idolUsername && k ==='false' ){
           console.log('in list:' + idolUsername);
           ExploreButtonBlock();
         }
-        else if(v==idolUsername && k =='true' ){
+        else if(v===idolUsername && k ==='true' ){
           console.log('in list:' + idolUsername);
           IsRobbotButtonBlock();
         }
@@ -264,7 +295,7 @@ function CheckIfRobot(isSelfFollow)
   success: function(msg){
         console.log(`success - idolId:${uid}`);
         obj = jQuery.parseJSON(msg);
-        if(obj.result==0)
+        if(obj.result===0)
         {
           console.log(obj.result);
           $("#exampleModalCenter").modal('show');
@@ -273,7 +304,7 @@ function CheckIfRobot(isSelfFollow)
         }
   },
   error: function(XMLHttpRequest, textStatus, errorThrown) {
-     //alert("some error");
+
   }
 });
 
@@ -320,7 +351,7 @@ function getIdol()
 
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {
-       //alert("some error");
+
     }
   });
 
@@ -346,7 +377,7 @@ function exploreIdol()
   success: function(msg){
         console.log(`success - idolId:${uid}`);
         obj = jQuery.parseJSON(msg);
-        if(obj.result==0)
+        if(obj.result===0)
         {
           console.log(obj.result);
           $("#exampleModalCenter").modal('show');
@@ -355,7 +386,7 @@ function exploreIdol()
         }
   },
   error: function(XMLHttpRequest, textStatus, errorThrown) {
-     //alert("some error");
+
   }
 });
 
@@ -367,7 +398,7 @@ function addIdolToSearchesList(isSelfFollow){
   var searches;
   if(sessionStorage.getItem('searches')!="undefined"){
     searches = jQuery.parseJSON(sessionStorage.getItem('searches'));
-    if(isSelfFollow==true){
+    if(isSelfFollow===true){
       var obj = {true:sessionStorage.getItem('idolUsername')};
       searches.push(obj);
     }
@@ -377,7 +408,7 @@ function addIdolToSearchesList(isSelfFollow){
     }
   }
   else{
-    if(isSelfFollow==true){
+    if(isSelfFollow===true){
       searches = [{true:sessionStorage.getItem('idolUsername')}];
     }
     else{
@@ -403,14 +434,14 @@ var userId = sessionStorage.getItem('userId');
           console.log(msg);
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {
-       alert("some error");
+
     }
   });
 
 }
 
 
-function drowChart(botAvg){
+function drowChart(followers,bots){
 // based on prepared DOM, initialize echarts instance
         var myChart = echarts.init(document.getElementById('main'));
         option = {
@@ -419,8 +450,12 @@ function drowChart(botAvg){
             {
               label: {
                 normal: {
+                  formatter:'{c}-{b}',
+                  padding:[0,0,0,0],
                   show:true,
-                  fontWeight:'bolder'
+                  extraCssText: 'box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);',
+                  fontWeight:'bolder',
+                  fontSize:'20',
                 }
               },
               selectedMode: 'single',
@@ -428,8 +463,8 @@ function drowChart(botAvg){
               type: 'pie',
               radius : '75%',
               center: ['50%', '60%'],
-              data:[{"value":botAvg, "name":"FAKE"},
-                     {"value":100 - botAvg, "name":"REAL"}
+              data:[{"value":bots, "name":"FAKE"},
+                     {"value":followers-bots, "name":"REAL"}
               ],
               itemStyle: {
                 emphasis: {
@@ -511,9 +546,8 @@ function showSelfResults(msg){
   $('.siteLocation').append(` > ${resultObj.data.fullName}`);
   $('#ResultUsername').html(resultObj.data.username);
   $('#profileImg').attr("src",resultObj.data.profilePicture);
-  console.log(resultObj.data.results[0].results.isBot);
-  $('#irobotCertainty').html(`Certainty: ${resultObj.data.results[0].results.certainty.toFixed(0)}%`);
-  if(resultObj.data.results[0].results.isBot==0){
+  $('#irobotCertainty').html(`Result certainty: ${resultObj.data.results.certainty.toFixed(0)}%`);
+  if(resultObj.data.results.fake==0){
     $('.robotImg').attr("src","img/noRobot.png").fadeIn("slow");
     $('#isRealUser').html(`${resultObj.data.username} is <span>Real</span>`).slideDown("slow");
   }
@@ -524,14 +558,25 @@ function showSelfResults(msg){
 }
 
 function showFollowersResults(msg){
-  var relations = calculateRelations(msg);
   var resultObj = jQuery.parseJSON(msg);
-  $('#botsDetails').html(`${relations.followers} followers >>> <span>${relations.botAvg}%</span> Robots`);
-  $('#profileImg').attr("src",resultObj.data.profilePicture);
-  $('#ResultUsername').html(resultObj.data.username);
-  $('#certainty').html(`Certainty: ${relations.certaintyAvg}%`);
-  $('.siteLocation').append(` > ${resultObj.data.fullName}`);
-  drowChart(relations.botAvg);
+  if(resultObj.data.username!=null){
+    //var relations = calculateRelations(msg);
+    $('#botsDetails').html(`${resultObj.data.results.fake + resultObj.data.results.real} followers >>> <span>${resultObj.data.results.fake}%</span> Fake`);
+    $('#profileImg').attr("src",resultObj.data.profilePicture);
+    $('#ResultUsername').html(resultObj.data.username);
+    $('#idolFollowers').html(`Followers: ${resultObj.data.counts.Followers}`);
+    $('#idolFollowing').html(`Following: ${resultObj.data.counts.Following}`);
+    $('#idolMedia').html(`Media: ${resultObj.data.counts.Media}`);
+    $('#certainty').html(`Result certainty: ${resultObj.data.results.certainty.toFixed(0)}%`);
+    $('.siteLocation').append(` > ${resultObj.data.fullName}`);
+    $('#isFinalResult').html(`Is result final: ${resultObj.data.final}`)
+    $('#profilesDetect').html(`Checked profiles: ${resultObj.data.results.fake + resultObj.data.results.real} out of ${resultObj.data.counts.Followers}`);
+    drowChart(resultObj.data.results.fake + resultObj.data.results.real,resultObj.data.results.fake);
+  }
+  else {
+    $('#botsDetails').html(`result <span>not yet</span> available`);
+    $('#profileImg').attr("src","img/TS-logo.jpg");
+  }
 }
 
 function autoComplete(){
@@ -544,7 +589,7 @@ function autoComplete(){
     success: function(msg){
         jQuery.each(msg,function(i, val){
           console.log(msg.length);
-          searchResult.push(val.username);
+          searchResult.push(val.fullName);
           console.log(val.username);
         });
         if(msg[0]){
@@ -559,7 +604,7 @@ function autoComplete(){
 
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {
-       alert("some error");
+
     }
   });
   });
@@ -577,7 +622,7 @@ function calculateRelations(msg){
   });
   certaintyAvg = certainty/obj.data.results.length;
   botAvg = sumRobot/obj.data.results.length*100;
-  relations = {botAvg:botAvg.toFixed(0),certaintyAvg:certaintyAvg.toFixed(0),followers:obj.data.results.length}
+  relations = {botAvg:botAvg.toFixed(0),certaintyAvg:certaintyAvg.toFixed(0),followers:obj.data.results.length,bots:sumRobot}
   return relations;
 }
 

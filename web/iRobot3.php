@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     //echo "Welcome to the member's area, " . $_SESSION['username'] . "!";
 } else {
-    header("Location: /index.php", true, 301);
+    header("Location: /true_story/client/index.html", true, 301);
     exit();
 }
 ?>
@@ -65,7 +65,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         <div class="card-body chartCard">
             <div class=" col-lg-10 offset-lg-1">
               <img class="robotImg img-fluid rounded-circle floatingImg" src="" alt="">
-			  <h5 id="irobotCertainty" class="text-center"></h5>
             </div>
         </div>
       </div>

@@ -46,14 +46,39 @@ nav .row{
 
 #irobotCertainty{
   padding-top: 1vw;
-  color: 	#65737e;
+  color: 	#0C203B;
   font-family: 'Orbitron', sans-serif;
 }
 
-#certainty{
+.resultInfo{
   padding-top: 1vw;
-  color:#9CA2A7;
+  color:#0C203B;
   font-family: 'Orbitron', sans-serif;
+}
+#certainty{
+
+}
+
+.searchResultContainer{
+  max-height: 15vw;
+  overflow-y: scroll;
+}
+
+.sResultContainer{
+  display: none;
+}
+ #main{
+   width: 46vw;
+   height:28vw;
+ }
+.searchResultTemplate{
+  //display:none;
+}
+.searchREsultCard .card-body{
+  padding:0px;
+}
+.searchResult{
+  border-bottom: 1px solid #dddddd;
 }
 .robotImg{
   background: #cccccc;

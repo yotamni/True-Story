@@ -39,9 +39,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 ?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" onclick="getMyIdols()" href="#">My requests</a>
-                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" onclick="logout()" href="#">Logout</a>
               </div>
             </li>
@@ -64,10 +61,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
       <div class="col-lg-4 offset-lg-4 card chartCard">
         <div class="card-body chartCard">
             <div class=" col-lg-10 offset-lg-1">
-              <img class="robotImg img-fluid rounded-circle floatingImg" src="" alt="">
+                <img class="robotImg img-fluid rounded-circle floatingImg" src="" alt="">
+                <h5 id="irobotCertainty" class="text-center"></h5>
             </div>
         </div>
       </div>
+
     </main>
     <footer class="text-center">
       <small>TRUE STORY | ALL RIGHTS RESERVED</small>

@@ -39,9 +39,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 ?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" onclick="getMyIdols()" href="#">My requests</a>
-                <div class="dropdown-divider"></div>
                 <a class="dropdown-item" onclick="logout()" href="#">Logout</a>
               </div>
             </li>
@@ -61,11 +58,18 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     <p id="ResultUsername"></p>
   </div>
     <main class="resultMain">
-      <div class="col-md-6 offset-md-4 card chartCard">
+      <div class="col-md-9 offset-md-3 card chartCard">
         <div class="card-body chartCard">
           <div class="row">
-            <div id="main" style="width: 30vw;height:28vw;"></div>
-            <p id="certainty"></p>
+            <div id="main"></div>
+            <div class="">
+              <p id="profilesDetect" class="resultInfo"></p>
+              <p id="certainty" class="resultInfo"></p>
+              <p id="isFinalResult" class="resultInfo"></p>
+              <p id="idolFollowers" class="resultInfo"></p>
+              <p id="idolFollowing" class="resultInfo"></p>
+              <p id="idolMedia" class="resultInfo"></p>
+            </div>
           </div>
         </div>
       </div>
