@@ -90,7 +90,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                   <p class="card-text"></p>
                   <p class="card-text"></p>
                   <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="" class="btn btn-secondary btn-sm">Show result</a>
+                    <a href="" class="btn btn-secondary btn-sm">Show results</a>
                     <button type="button" class="btn btn-outline-danger"><i class="fas fa-trash"></i></button>
                   </div>
                 </div>

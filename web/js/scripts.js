@@ -545,7 +545,7 @@ function showSelfResults(msg){
   $('.siteLocation').append(` > ${resultObj.data.fullName}`);
   $('#ResultUsername').html(resultObj.data.username);
   $('#profileImg').attr("src",resultObj.data.profilePicture);
-  $('#irobotCertainty').html(`Result certainty: ${resultObj.data.results.certainty.toFixed(0)}%`);
+  $('#irobotCertainty').html(`Results certainty: ${resultObj.data.results.certainty.toFixed(0)}%`);
   if(resultObj.data.results.fake==0){
     $('.robotImg').attr("src","img/noRobot.png").fadeIn("slow");
     $('#isRealUser').html(`${resultObj.data.username} is <span>Real</span>`).slideDown("slow");
@@ -567,7 +567,7 @@ function showFollowersResults(msg){
     $('#idolFollowers').html(`Followers: ${resultObj.data.counts.Followers}`);
     $('#idolFollowing').html(`Following: ${resultObj.data.counts.Following}`);
     $('#idolMedia').html(`Media: ${resultObj.data.counts.Media}`);
-    $('#certainty').html(`Result certainty: ${resultObj.data.results.certainty.toFixed(0)}%`);
+    $('#certainty').html(`Results certainty: ${resultObj.data.results.certainty.toFixed(0)}%`);
     $('.siteLocation').append(` > ${resultObj.data.fullName}`);
     if(resultObj.data.final == true)
     {
