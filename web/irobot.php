@@ -1,3 +1,6 @@
+<script>
+  console.log("in irobot");
+</script>
 <?php
 session_start();
 /*
