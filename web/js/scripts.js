@@ -222,7 +222,7 @@ function getMyIdols(){
         temp.find('p:nth-of-type(2)').html(value.fullName);
         if(selfDetect[key]=='true'){
             temp.find('p:first').html(value.username + ' <i class="fab fa-android"></i>');
-            temp.find('a').attr("href",`iRobot.php?${value.userID}`);
+            temp.find('a').attr("href",`iRobot3.php?${value.userID}`);
         }
         else {
             temp.find('p:first').html(value.username + ' <i class="fas fa-chart-pie"></i>');
