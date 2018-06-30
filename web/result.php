@@ -29,7 +29,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     </header>
     <nav>
       <div class="row">
-        <div class="col-lg-8 offset-lg-2 siteLocation">HOME > RESULT </div>
+        <div class="col-lg-8 offset-lg-2 siteLocation">HOME > RESULTS </div>
         <div class="userIsLogedIn navbar-expand-lg navbar">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown ">
