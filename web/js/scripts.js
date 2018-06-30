@@ -368,14 +368,14 @@ function transformNumbers(numberToTransform)
 
 function exploreIdol()
 {
-  uid = sessionStorage.getItem("idolId");
+  username = sessionStorage.getItem("idolUsername");
   console.log("in exploreIdol");
   $.ajax({
   type: "POST",
   url: "https://true-story-web-service.herokuapp.com",
-  data: `request=insertIdol&uid=${uid}`,
+  data: `request=insertIdol&username=${username}`,
   success: function(msg){
-        console.log(`success - idolId:${uid}`);
+        console.log(msg);
         obj = jQuery.parseJSON(msg);
         if(obj.result===0)
         {
