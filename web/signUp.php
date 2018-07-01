@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $url = 'https://api.mlab.com/api/1/databases/customers/collections/users?apiKey=tvG8BMjzxtNwm3fRgQv4LNbcF2IIeWWc';
 $data = array( 'id' => trim(com_create_guid(), '{}'),
 							'name' => $_POST['fullName'],
@@ -23,6 +23,8 @@ try {
   $response_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
   curl_close($ch);
   $result = json_decode($response, true);
+	$_SESSION['loggedin'] = true;
+  $_SESSION['username'] = $_POST["username"];
   echo json_encode($result['name']);
 } catch (Exception $e) {
   echo "FAIL";
