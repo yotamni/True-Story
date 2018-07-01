@@ -61,12 +61,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <img src="img/checked.png" class="col-lg-4 offset-lg-4 col-sm-3 offset-sm-4" id="exampleModalCenterTitle" alt="">
+              <img src="img/laddar.png" class="col-lg-4 offset-lg-4 col-sm-3 offset-sm-4 rounded-circle" id="exampleModalCenterTitle" alt="">
               </button>
             </div>
             <div class="modal-body text-center">
-              <h5>Your request has been received</h5>
-              <h5>Final results will be received in 3 days</h5>
+              <h5></h5>
+              <h5></h5>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>

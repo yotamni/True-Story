@@ -85,7 +85,7 @@ function signUp()
           }
     },
     error: function(XMLHttpRequest, textStatus, errorThrown) {
-
+      console.log("error signup");
     }
   });
 
@@ -144,7 +144,15 @@ function removeIdol(idolName,button)
       data: JSON.stringify( {   "$set" : { "searches" : arr } } ),
       contentType: "application/json",
       success: function(msg){
-            console.log(msg);
+        /*$.ajax({
+          type: "DELETE",
+          url: `https://api.mlab.com/api/1/databases/analysis/collections/users/${idolId}?apiKey=tvG8BMjzxtNwm3fRgQv4LNbcF2IIeWWc`,
+          data: JSON.stringify([]),
+          contentType: "application/json",
+          success: function(msg){
+                console.log(msg);
+          }
+          */
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
 
@@ -284,7 +292,7 @@ function CheckIfIdolInSearchesList(idolUsername)
 
 function CheckIfRobot(isSelfFollow)
 {
-
+  $("#exampleModalCenter").modal('show');
   console.log("in CheckIfRobot() - ");
 
   username = sessionStorage.getItem("idolUsername");
@@ -297,7 +305,9 @@ function CheckIfRobot(isSelfFollow)
         if(obj.result===0)
         {
           console.log(obj.result);
-          $("#exampleModalCenter").modal('show');
+          $('#exampleModalCenterTitle').attr("src","img/checked.png");
+          $('#exampleModalCenter h5:nth-of-type(1)').html('Your request has been received');
+            $('#exampleModalCenter h5:nth-of-type(2)').html('Final results will be received in 3 days');
           addIdolToSearchesList(isSelfFollow);
           IsRobbotButtonBlock();
         }
@@ -367,6 +377,7 @@ function transformNumbers(numberToTransform)
 
 function exploreIdol()
 {
+  $("#exampleModalCenter").modal('show');
   username = sessionStorage.getItem("idolUsername");
   console.log("in exploreIdol");
   $.ajax({
@@ -379,7 +390,9 @@ function exploreIdol()
         if(obj.result===0)
         {
           console.log(obj.result);
-          $("#exampleModalCenter").modal('show');
+          $('#exampleModalCenterTitle').attr("src","img/checked.png");
+          $('#exampleModalCenter h5:nth-of-type(1)').html('Your request has been received');
+            $('#exampleModalCenter h5:nth-of-type(2)').html('Final results will be received in 3 days');
           addIdolToSearchesList();
           ExploreButtonBlock();
         }
